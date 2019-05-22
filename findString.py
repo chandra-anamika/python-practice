@@ -6,7 +6,7 @@ def count_substring(string, sub_string):
 
     #Traversing the string and calculating the number of occurences of substring
     while i<lenStr:
-        #Matching from ith to length of substring to substring and increasing the counter in case of match 
+        #Matching from ith to length of substring to substring and increasing the counter in case of match- 
         if string[i:i+lenSubstr]==sub_string:
             count = count +1
         i=i+1
