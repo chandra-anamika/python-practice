@@ -10,21 +10,20 @@ dataset= pd.read_csv('Position_Salaries.csv')
 position = dataset.iloc[:, 1:2].values
 salary=dataset.iloc[:, 2].values
 
+#Fitting random forest regression to the dataset
+from sklearn.ensemble import RandomForestRegressor
+regressor = RandomForestRegressor(n_estimators=10, random_state=0)
+regressor.fit(position, salary)
 
-#Fitting decision tree regression to the dataset
-from sklearn.tree import DecisionTreeRegressor
-regressor = DecisionTreeRegressor(random_state = 0)
-regressor.fit(position,salary)
-
-#Predicting salary with decision tree regression
+#Predicting salary with random forest regression
 salaryPred = regressor.predict([[6.5]])
 
-#Visualizing decision tree regression model
+#Visualizing random regression model
 positionGrid = np.arange(min(position), max(salary), 0.01)
 positionGrid = positionGrid.reshape((len(positionGrid),1))
 plt.scatter(position,salary, color='green')
 plt.plot(positionGrid,regressor.predict(positionGrid), color = 'red')
-plt.title('Position & Salary Decision Tree Reg')
+plt.title('Position & Salary Random Forest Regression')
 plt.xlabel('Position')
 plt.ylabel('Salary')
 plt.show()
