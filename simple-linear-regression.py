@@ -1,5 +1,4 @@
 #Importing libraries
-import numpy as np
 import matplotlib.pyplot as plt 
 import pandas as pd
 
@@ -20,7 +19,11 @@ regressor = LinearRegression()
 regressor.fit(yoe_train,salary_train)
 
 #Predicting the test set results
-salary_pred =regressor.predict(yoe_test)
+print("Enter the years of experience - ",end='')
+yoe_input = float(input())
+salary_pred =regressor.predict([[yoe_input]])
+print("The predicted salary is  - ",end='')
+print(salary_pred)
 
 #Visualizing the training set results
 plt.scatter(yoe_train, salary_train, color='blue')
